@@ -7,6 +7,11 @@ const CONSTANT = {
       CREATE_USER: "/createUser",
       LOGIN: '/auth'
     },
+    POST: {
+      NEW_POST: "/newpost",
+      EDIT: '/edit',
+      DELETE:'/delete'
+    },
    
     JWT: {
       JWT_SCRET: "SREeBangaram" 
