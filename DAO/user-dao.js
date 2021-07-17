@@ -23,43 +23,37 @@ const userDAO = {
             password: payload.password, //password updated with hash and also stored in DB aswell
 
             // createdAt:Date.now(), //the fields which r in schema as a default no need to write inside dao,no 
-            // need to pass from postman
+            // need to pass from poostman
             // leaveCount:0
 
         }).save();
 
 
     },
-    getByCondition: (condition) => {
-        return userModel.findOne(condition);
-    },
+  
     emailExist: (email, phone) => {
         return userModel.findOne({ email: email, phone: phone })
+    },
+   
+
+    userEdit: (userId,payload) => {
+        return userModel.updateOne({"_id":userId},{$set:payload}) //user_id for update
+    },
+    userDelete: (userId) => {
+        return userModel.remove({"_id":userId})
+
+    },
+ 
+    // leaveIdExist: (leaveID, empId) => {
+    //     return userModel.findOne({ leaveID: leaveID, empId: empId })
+    // }
+    getByCondition: (condition) => {
+        return userModel.findOne(condition);
     },
     isExist: (email) => {
         return userModel.findOne({ email: email })
 
     },
-
-    leaveCountBulk: (condition) => {
-
-
-        return userModel.updateMany({ "role": "EMPLOYEE" }, { $set: { "leaveCount": 10 } })
-
-
-    },
-    leaveCountOne: (payload) => {
-
-        console.log('payload inside dao from service', payload);
-        return userModel.updateOne({ "empId": payload.empId }, { $set: { "leaveCount": 15 } })
-
-
-    }
- 
-    // leaveIdExist: (leaveID, empId) => {
-    //     return userModel.findOne({ leaveID: leaveID, empId: empId })
-    // }
-
 
 }
 module.exports = userDAO;

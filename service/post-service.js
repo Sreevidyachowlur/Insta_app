@@ -31,6 +31,19 @@ const postService = {
 
         })
     },
+    postDelete:(postId) => { //post will come from authentication 
+
+       return new Promise((resolve, reject) => { //NOTE:in service we will use promise(resolve,reject),then() and catch()
+            // payload['userID'] = user._id; //get empid from authentication req.post and set new property empId to payload 
+            // coming from payload.
+            postDAO.postDelete(postId).then((result) => {
+                resolve('Post Deleted');
+            }).catch(error => {
+                reject(error);
+            }) 
+
+        })
+    },
 }
 
 

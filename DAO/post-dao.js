@@ -28,8 +28,8 @@ const postDAO = {
     postEdit: (postId,payload) => {
         return postModel.updateOne({"_id":postId},{$set:payload}) //post_id for update
     },
-    isExist: (email) => {
-        return postModel.findOne({ email: email })
+    postDelete: (postId) => {
+        return postModel.remove({"_id":postId})
 
     },
 

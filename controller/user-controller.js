@@ -16,7 +16,17 @@ route.post(CONSTANT.ENDPOINT.USER.CREATE_USER, function (req, res) {
 })
     
 
+route.put(CONSTANT.ENDPOINT.USER.EDIT+"/:userId", authentication, (req, res) => { //here constant is file name
+    console.log(req.body);
+    userService.userEdit(req.params.userId, req.body).then(result => { //NOTE: in controller we will use only then() and catch()
+        console.log('user details-edited', result);
+        res.send(result);
+    }).catch(error => {
+        console.log('user cannot edit', error);
+        res.send(error);
+    })
 
+}),
 
 
 

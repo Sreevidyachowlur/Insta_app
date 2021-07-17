@@ -16,14 +16,7 @@ route.post(CONSTANT.ENDPOINT.POST.NEW_POST,authentication, function (req, res) {
 }),
 
 
-route.delete(CONSTANT.ENDPOINT.POST.DELETE, function (req, res) {
-    console.log(req.body);
-    postService.create(req.body).then(result => { //NOTE: in controller we will use only then() and catch()
-        res.send(result);
-    }).catch(error => {
-        res.send(error);
-    })
-})   
+ 
 route.put(CONSTANT.ENDPOINT.POST.EDIT+"/:postId", authentication, (req, res) => { //here constant is file name
     console.log(req.body);
     postService.postEdit(req.params.postId, req.body).then(result => { //NOTE: in controller we will use only then() and catch()
@@ -36,6 +29,14 @@ route.put(CONSTANT.ENDPOINT.POST.EDIT+"/:postId", authentication, (req, res) => 
 
 }),
 
+route.delete(CONSTANT.ENDPOINT.POST.DELETE+"/:postId", function (req, res) {
+    console.log(req.body);
+    postService.postDelete(req.params.postId).then(result => { //NOTE: in controller we will use only then() and catch()
+        res.send(result);
+    }).catch(error => {
+        res.send(error);
+    })
+})  
 
 
 

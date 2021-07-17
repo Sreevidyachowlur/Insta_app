@@ -5,7 +5,9 @@ const CONSTANT = {
   ENDPOINT: {
     USER: {
       CREATE_USER: "/createUser",
-      LOGIN: '/auth'
+      LOGIN: '/auth',
+      EDIT:'/userEdit',
+      DELETE:'/userDelete'
     },
     POST: {
       NEW_POST: "/newpost",

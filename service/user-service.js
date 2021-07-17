@@ -25,25 +25,21 @@ const userService = {
         })
 
     },
-    leaveCountBulk: (condition) => {
+    userEdit:(userId, payload) => { //user will come from authentication 
 
-
+        console.log('payload inside service from controller', payload);
 
         return new Promise((resolve, reject) => { //NOTE:in service we will use promise(resolve,reject),then() and catch()
+            // payload['userID'] = user._id; //get empid from authentication req.user and set new property empId to payload 
+            // coming from payload.
+            userDAO.userEdit(userId,payload).then((result) => {
+                resolve('successfully edited user details');
+            }).catch(error => {
+                reject(error);
+            }) 
 
-            userDAO.leaveCountBulk().then((result) => {
-                console.log(result);
-
-
-                resolve('Leave count updated ');
-            })
-
-        }).catch(error => {
-            reject(error);
         })
-
     },
-
     leaveCountOne: (payload) => {
 
 
