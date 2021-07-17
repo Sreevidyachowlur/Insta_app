@@ -21,12 +21,17 @@ const postSchema = new Schema({
     default:0
   },
   comment: {
-    type: Array,
-    default:0
+    type: [{
+        String
+    }],
+    default:[]
   },
   userID:{
     
-        type: String
+       
+            type: Schema.Types.ObjectId, //reference to user collection to populate user data post.
+            ref: "users"
+         
         // require: true
   }
   

@@ -13,6 +13,7 @@ require('./db');
 
 app.use('/users', require('./controller/user-controller'));
 app.use('/auth', require('./controller/auth-controller'));
+app.use('/post', require('./controller/post-controller'));
 
 
 app.listen(3000, () => {
