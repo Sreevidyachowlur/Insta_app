@@ -14,7 +14,7 @@ const postDAO = {
             title: payload.title,
             description:payload.description,
             userID :payload.userID,
-           
+            image:payload.image,
 
              // createdAt:Date.now(), //the fields which r in schema as a default no need to write inside dao,no 
             // need to pass from postman
@@ -30,6 +30,20 @@ const postDAO = {
     },
     postDelete: (postId) => {
         return postModel.remove({"_id":postId})
+
+    },
+    postLike: (postId,payload) => {
+        if(payload.like==true){
+            return postModel.updateOne( {"_id":postId}, { $inc: { "like": 1 } } ); //$inc is used for increment
+        }else{
+            return postModel.updateOne( {"_id":postId}, { $inc: { "like": -1 } } );
+        }
+
+
+    },
+    postComment: (postId,payload) => {
+        // return postModel.updateOne({"_id":postId},{ $push: { "comment": payload } }) //for array we have to use $push
+        return postModel.updateOne({"_id":postId},{ $addToSet: { "comment": payload } })
 
     },
 

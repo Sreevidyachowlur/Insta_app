@@ -12,7 +12,9 @@ const CONSTANT = {
     POST: {
       NEW_POST: "/newpost",
       EDIT: '/edit',
-      DELETE:'/delete'
+      DELETE:'/delete',
+      LIKE:'/like',
+      COMMENT:'/comment'
     },
    
     JWT: {

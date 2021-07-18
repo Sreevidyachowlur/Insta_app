@@ -20,12 +20,15 @@ const postSchema = new Schema({
     type: Number,
     default:0
   },
-  comment: {
-    type: [{
-        String
-    }],
-    default:[]
-  },
+  comment:[{
+    userId:{
+      type:Schema.Types.ObjectId,
+      ref:'users'
+    },
+    text:{
+      type:String
+    }
+  }],
   userID:{
     
        
@@ -33,6 +36,10 @@ const postSchema = new Schema({
             ref: "users"
          
         // require: true
+  },
+  image:{
+    type:String,
+    require: true
   }
   
 

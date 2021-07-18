@@ -32,6 +32,9 @@ const userService = {
         return new Promise((resolve, reject) => { //NOTE:in service we will use promise(resolve,reject),then() and catch()
             // payload['userID'] = user._id; //get empid from authentication req.user and set new property empId to payload 
             // coming from payload.
+            if(payload.email){
+                reject('email not editable');
+            }
             userDAO.userEdit(userId,payload).then((result) => {
                 resolve('successfully edited user details');
             }).catch(error => {

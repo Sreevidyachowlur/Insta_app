@@ -38,6 +38,30 @@ route.delete(CONSTANT.ENDPOINT.POST.DELETE+"/:postId", function (req, res) {
     })
 })  
 
+route.put(CONSTANT.ENDPOINT.POST.LIKE+'/:postId', authentication, (req, res) => { //here constant is file name
+    console.log(req.body);
+    postService.postLike(req.params.postId, req.body).then(result => { //NOTE: in controller we will use only then() and catch()
+        console.log('post-edited', result);
+        res.send(result);
+    }).catch(error => {
+        console.log('post cannot edit', error);
+        res.send(error);
+    })
+
+}),
+
+route.put(CONSTANT.ENDPOINT.POST.COMMENT+'/:postId', authentication, (req, res) => { //here constant is file name
+    console.log(req.body);
+    postService.postComment(req.params.postId,req.user, req.body).then(result => { //NOTE: in controller we will use only then() and catch()
+        console.log('post-edited', result);
+        res.send(result);
+    }).catch(error => {
+        console.log('post cannot edit', error);
+        res.send(error);
+    })
+
+})
+
 
 
 
